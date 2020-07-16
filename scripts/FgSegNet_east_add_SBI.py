@@ -1,13 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 27 2018
 
-@author: longang
+"""
+Created on monday 1 june 2020
+
+@author: Anish Kumar
 """
 
-get_ipython().magic(u'load_ext autoreload')
-get_ipython().magic(u'autoreload 2')
+#get_ipython().magic(u'load_ext autoreload')
+#get_ipython().magic(u'autoreload 2')
 
 import numpy as np
 import tensorflow as tf
@@ -34,7 +33,7 @@ K.set_session(sess)
 import keras, glob
 from keras.preprocessing import image as kImage
 from sklearn.utils import compute_class_weight
-from FgSegNet_v2_module import FgSegNet_v2_module
+from anish_model import anish_model
 from keras.utils.data_utils import get_file
 
 # alert the user
@@ -126,7 +125,7 @@ def train(data, scene, mdl_path, vgg_weights_path):
     ###
     
     img_shape = np.shape(data[0][0])#(height, width, channel)
-    model = FgSegNet_v2_module(lr, img_shape, scene, vgg_weights_path)
+    model = anish_model(lr, img_shape, scene, vgg_weights_path)
     model = model.initModel('SBI')
 
     # make sure that training input shape equals to model output
