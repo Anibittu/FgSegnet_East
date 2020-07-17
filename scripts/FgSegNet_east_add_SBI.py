@@ -33,7 +33,7 @@ K.set_session(sess)
 import keras, glob
 from keras.preprocessing import image as kImage
 from sklearn.utils import compute_class_weight
-from anish_model import anish_model
+from FgSegNet_east_add_model import anish_model
 from keras.utils.data_utils import get_file
 
 # alert the user

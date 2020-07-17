@@ -4,8 +4,8 @@ Created on monday 1 june 2020
 @author: Anish Kumar
 """
 
-get_ipython().magic(u'load_ext autoreload')
-get_ipython().magic(u'autoreload 2')
+#get_ipython().magic(u'load_ext autoreload')
+#get_ipython().magic(u'autoreload 2')
 
 import numpy as np
 import tensorflow as tf

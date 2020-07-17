@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Jun 27 2018
+Created on monday 1 june 2020
 
-@author: longang
+@author: Anish Kumar
 """
 
 import keras
