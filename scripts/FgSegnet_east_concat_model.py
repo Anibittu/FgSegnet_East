@@ -40,7 +40,7 @@ def loss2(y_true, y_pred):
 def acc2(y_true, y_pred):
     return K.mean(K.equal(y_true, K.round(y_pred)), axis=-1)
 
-class anish_model(object):
+class FgSegNet_v2_module(object):
     
     def __init__(self, lr, img_shape, scene, vgg_weights_path):
         self.lr = lr

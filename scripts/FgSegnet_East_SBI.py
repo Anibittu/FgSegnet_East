@@ -1,4 +1,3 @@
-
 """
 Created on monday 1 june 2020
 
@@ -31,9 +30,9 @@ sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)
 K.set_session(sess)
 
 import keras, glob
+import config
 from keras.preprocessing import image as kImage
 from sklearn.utils import compute_class_weight
-from anish_model import anish_model
 from keras.utils.data_utils import get_file
 
 # alert the user
@@ -118,14 +117,14 @@ def getData(train_dir, dataset_dir, scene):
 def train(data, scene, mdl_path, vgg_weights_path):
     
     ### hyper-params
-    lr = 1e-4
-    val_split = 0.2
-    max_epoch = 10
-    batch_size = 1
+    lr = config.lr
+    val_split = config.val_split 
+    max_epoch = config.max_epoch
+    batch_size = config.batch_size
     ###
     
     img_shape = np.shape(data[0][0])#(height, width, channel)
-    model = anish_model(lr, img_shape, scene, vgg_weights_path)
+    model = config.model(lr, img_shape, scene, vgg_weights_path)
     model = model.initModel('SBI')
 
     # make sure that training input shape equals to model output
@@ -152,15 +151,13 @@ dataset = [ 'train' ]
 
 
 main_dir = os.path.join('..', 'FgSegNet_v2')
-'''
+#vgg_weights_path = config.weights_path
 vgg_weights_path = 'vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
 if not os.path.exists(vgg_weights_path):
     WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
     vgg_weights_path = get_file('vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5',
                                 WEIGHTS_PATH_NO_TOP, cache_subdir='models',
                                 file_hash='6d6bbae143d832006294945121d1f1fc')
-'''
-vgg_weights_path = '/home/anish/FgSegNet_v2-master/FgSegNet_v2/SBI/models/EAST_IC15+13_model.h5'
 main_mdl_dir = os.path.join(main_dir, 'SBI', 'models')
 if not os.path.exists(main_mdl_dir):
     os.makedirs(main_mdl_dir)
