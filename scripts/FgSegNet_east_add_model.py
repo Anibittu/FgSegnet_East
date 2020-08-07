@@ -110,7 +110,7 @@ class FgSegNet_v2_module(object):
         net_input = Input(shape=(h, w, d), name='net_input')
         #vgg_output = self.VGG16(net_input)
         #Reading the model from JSON file
-        with open('/home/anish/Downloads/model (copy).json', 'r') as json_file:
+        with open('/home/ug2017/min/17155014/modelcopy.json', 'r') as json_file:
             json_savedModel= json_file.read()
         #load the model architecture 
         model_j = keras.models.model_from_json(json_savedModel,custom_objects= {'tf':tf,'RESIZE_FACTOR':2})
