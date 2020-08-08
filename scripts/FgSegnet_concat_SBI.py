@@ -87,7 +87,7 @@ def train(data, val, scene, mdl_path, vgg_weights_path):
     model = FgSegNet_v2_module(lr, img_shape, scene, vgg_weights_path)
     model = model.initModel('SBI')
     early = keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=1e-4, patience=10, verbose=0, mode='auto')
-    mc = keras.callbacks.ModelCheckpoint('/home/ug2017/min/17155014/weights/weightfad{epoch:08d}.h5', 
+    mc = keras.callbacks.ModelCheckpoint('weightfad{epoch:08d}.h5', 
                                      save_weights_only=False, period=5)
     logs_base_dir='/home/ug2017/min/17155014/FgSegnet_East/scripts/logs'
     os.makedirs(logs_base_dir, exist_ok=True)
