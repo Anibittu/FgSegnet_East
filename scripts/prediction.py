@@ -2,6 +2,7 @@ import numpy as np
 from keras.preprocessing import image
 from keras.models import load_model
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 from instance_normalization import InstanceNormalization
 from my_upsampling_2d import MyUpSampling2D
 from FgSegNet_add_module import loss, acc, loss2, acc2
@@ -32,9 +33,6 @@ plt.subplot(1, 1, 1)
 plt.rcParams['figure.figsize'] = (5.0, 5.0)
 plt.rcParams['image.cmap'] = 'gray'
 
-plt.imshow(probs)
-
 #plt.title('Segmentation mask before thresholding')
 #plt.axis('off')
-plt.savefig('/home/ug2017/min/17155014/FgSegnet_East/pred1.png')
-plt.show()
+plt.savefig('pred1.png')
