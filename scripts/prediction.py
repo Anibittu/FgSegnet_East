@@ -34,6 +34,9 @@ plt.subplot(1, 1, 1)
 plt.rcParams['figure.figsize'] = (5.0, 5.0)
 plt.rcParams['image.cmap'] = 'gray'
 
+plt.imshow(probs)
+
 #plt.title('Segmentation mask before thresholding')
 #plt.axis('off')
-plt.savefig('pred1.png')
+plt.savefig('/pred1.png')
+plt.show()
