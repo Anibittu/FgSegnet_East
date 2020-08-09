@@ -38,5 +38,5 @@ plt.imshow(probs)
 
 #plt.title('Segmentation mask before thresholding')
 #plt.axis('off')
-plt.savefig('/pred1.png')
+plt.savefig('pred1.png')
 plt.show()
