@@ -2,7 +2,7 @@ import numpy as np
 from keras.preprocessing import image
 from keras.models import load_model
 import matplotlib.pyplot as plt
-matplotlib.use('Agg')
+plt.use('Agg')
 from instance_normalization import InstanceNormalization
 from my_upsampling_2d import MyUpSampling2D
 from FgSegNet_add_module import loss, acc, loss2, acc2
