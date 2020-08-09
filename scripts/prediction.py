@@ -10,7 +10,7 @@ import cv2
 def load_image(path):
     x = image.load_img(path)
     x = image.img_to_array(x)
-    x = cv2.resize(x, (int(536), int(416)))
+    x = cv2.resize(x, (int(540), int(420)))
     x = np.expand_dims(x, axis=0)
     return x
 
