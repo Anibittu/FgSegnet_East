@@ -4,7 +4,7 @@ from keras.models import load_model
 import matplotlib.pyplot as plt
 from instance_normalization import InstanceNormalization
 from my_upsampling_2d import MyUpSampling2D
-from FgSegNet_v2_module import loss, acc, loss2, acc2
+from FgSegNet_add_module import loss, acc, loss2, acc2
 import tensorflow as tf
 import cv2
 def load_image(path):
@@ -14,11 +14,11 @@ def load_image(path):
     x = np.expand_dims(x, axis=0)
     return x
 
-image_path = '/home/anish/FgSegNet_v2-master/datasets/SBI2015_dataset/train/input/158.png'
+image_path = '/home/ug2017/min/17155014/inputx/0.png'
 #image_path ="/home/anish/Downloads/resize-15897880709460665360.png"
 
 #model_path = 'mdl_highway_fgsegnet_v2.h5'
-model_path = '/home/anish/FgSegNet_v2-master/scripts/weightsss00000010.h5'
+model_path = '/home/ug2017/min/17155014/weights/weightfad00000030.h5'
 
 x = load_image(image_path) # load a test frame
 model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
@@ -36,5 +36,5 @@ plt.imshow(probs)
 
 #plt.title('Segmentation mask before thresholding')
 #plt.axis('off')
-plt.savefig('pred3.png')
+plt.savefig('/home/ug2017/min/17155014/FgSegnet_East/pred1.png')
 plt.show()
