@@ -1,6 +1,8 @@
 import numpy as np
 from keras.preprocessing import image
 from keras.models import load_model
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from instance_normalization import InstanceNormalization
 from my_upsampling_2d import MyUpSampling2D
