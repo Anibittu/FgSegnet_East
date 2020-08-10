@@ -17,24 +17,19 @@ def load_image(path):
     return x
 
 image_path = '/home/ug2017/min/17155014/inputx/0.png'
-#image_path ="/home/anish/Downloads/resize-15897880709460665360.png"
+for i in range (36):
+    if(i%5==0):
+        model_path = '/home/ug2017/min/17155014/weights/weightfad000000{}.h5'.format(i)
+        x = load_image(image_path) # load a test frame
+        model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
+        probs = model.predict(x, batch_size=1, verbose=1)
+        print(probs.shape) # (1, 240,320,1)
+        probs = probs.reshape([probs.shape[1], probs.shape[2]])
+        print(probs.shape) # (240,320)
+        plt.subplot(1, 1, 1)
+        plt.rcParams['figure.figsize'] = (5.0, 5.0)
+        plt.rcParams['image.cmap'] = 'gray'
 
-#model_path = 'mdl_highway_fgsegnet_v2.h5'
-model_path = '/home/ug2017/min/17155014/weights/weightfad00000025.h5'
-
-x = load_image(image_path) # load a test frame
-model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-probs = model.predict(x, batch_size=1, verbose=1)
-print(probs.shape) # (1, 240,320,1)
-probs = probs.reshape([probs.shape[1], probs.shape[2]])
-print(probs.shape) # (240,320)
-
-
-plt.subplot(1, 1, 1)
-plt.rcParams['figure.figsize'] = (5.0, 5.0)
-plt.rcParams['image.cmap'] = 'gray'
-
-plt.imshow(probs)
-
-plt.savefig('pred2.png')
-plt.show()
+        plt.imshow(probs)
+        plt.savefig('pred{}.png'.format(i)
+        plt.show()
