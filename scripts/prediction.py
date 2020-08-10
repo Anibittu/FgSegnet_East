@@ -17,10 +17,10 @@ def load_image(path):
     return x
 
 image_path = '/home/ug2017/min/17155014/inputx/0.png'
-for i in range (36):
+for i in range (16):
     if((i%5==0)&(i>0)):
         if(i==5):
-             model_path = '/home/ug2017/min/17155014/weights/weightfad00000005.h5'
+             model_path = '/home/ug2017/min/17155014/weights/weightrr00000005.h5'
         else:
              model_path = '/home/ug2017/min/17155014/weights/weightfad000000{}.h5'.format(i)
        
@@ -35,4 +35,4 @@ for i in range (36):
         plt.rcParams['image.cmap'] = 'gray'
 
         plt.imshow(probs)
-        plt.savefig('pred{}.png'.format(i))
+        plt.savefig('predeastadd{}.png'.format(i))
