@@ -18,7 +18,7 @@ def load_image(path):
 
 image_path = '/home/ug2017/min/17155014/inputx/0.png'
 for i in range (36):
-    if(i%5==0):
+    if((i%5==0)&(i>0)):
         model_path = '/home/ug2017/min/17155014/weights/weightfad000000{}.h5'.format(i)
         x = load_image(image_path) # load a test frame
         model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
