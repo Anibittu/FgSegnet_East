@@ -20,7 +20,7 @@ image_path = '/home/ug2017/min/17155014/inputx/0.png'
 #image_path ="/home/anish/Downloads/resize-15897880709460665360.png"
 
 #model_path = 'mdl_highway_fgsegnet_v2.h5'
-model_path = '/home/ug2017/min/17155014/weights/weightfad00000030.h5'
+model_path = '/home/ug2017/min/17155014/weights/weightfad00000025.h5'
 
 x = load_image(image_path) # load a test frame
 model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
@@ -36,5 +36,5 @@ plt.rcParams['image.cmap'] = 'gray'
 
 plt.imshow(probs)
 
-plt.savefig('pred1.png')
+plt.savefig('pred2.png')
 plt.show()
