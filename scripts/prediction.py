@@ -22,7 +22,7 @@ for i in range (16):
         if(i==5):
              model_path = '/home/ug2017/min/17155014/weights/weightrr00000005.h5'
         else:
-             model_path = '/home/ug2017/min/17155014/weights/weightfad000000{}.h5'.format(i)
+             model_path = '/home/ug2017/min/17155014/weights/weightrr000000{}.h5'.format(i)
        
         x = load_image(image_path) # load a test frame
         model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
