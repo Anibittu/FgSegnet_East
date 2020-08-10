@@ -35,4 +35,4 @@ for i in range (36):
         plt.rcParams['image.cmap'] = 'gray'
 
         plt.imshow(probs)
-        plt.savefig('pred{}.png').format(i)
+        plt.savefig('pred{}.png'.format(i))
