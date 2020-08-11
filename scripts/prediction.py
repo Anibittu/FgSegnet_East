@@ -17,12 +17,12 @@ def load_image(path):
     return x
 
 image_path = '/home/ug2017/min/17155014/inputx/0.png'
-for i in range (16):
+for i in range (36):
     if((i%5==0)&(i>0)):
         if(i==5):
-             model_path = '/home/ug2017/min/17155014/weights/weightrr00000005.h5'
+             model_path = '/home/ug2017/min/17155014/weights/weightconcat00000005.h5'
         else:
-             model_path = '/home/ug2017/min/17155014/weights/weightrr000000{}.h5'.format(i)
+             model_path = '/home/ug2017/min/17155014/weights/weightconcat000000{}.h5'.format(i)
        
         x = load_image(image_path) # load a test frame
         model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
@@ -35,4 +35,4 @@ for i in range (16):
         plt.rcParams['image.cmap'] = 'gray'
 
         plt.imshow(probs)
-        plt.savefig('predeastadd{}.png'.format(i))
+        plt.savefig('predFGadd{}.png'.format(i))
