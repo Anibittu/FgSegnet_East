@@ -39,7 +39,7 @@ for i in range (36):
         plt.savefig('predFGadd{}.png'.format(i))
         plt.show()
 '''
-model_path = '/home/ug2017/min/17155014/weights/weightconcat00000005.h5'
+model_path = '/home/ug2017/min/17155014/weights/weightconcat00000010.h5'
 x = load_image(image_path) # load a test frame
 model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
 probs = model.predict(x, batch_size=1, verbose=1)
@@ -54,7 +54,7 @@ plt.imshow(probs)
 
 plt.title('Segmentation mask before thresholding')
 plt.axis('off')
-plt.savefig('try0.png')
+plt.savefig('try1.png')
 plt.show()
 # Thresholding (one can specify any threshold values)
 threshold = 0.8
@@ -69,5 +69,5 @@ plt.imshow(probs)
 
 plt.title('Segmentation mask after thresholding')
 plt.axis('off')
-plt.savefig('TRY0.png')
+plt.savefig('TRY2.png')
 plt.show()
