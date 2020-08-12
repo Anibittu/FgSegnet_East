@@ -18,7 +18,7 @@ def load_image(path):
 
 image_path = '/home/ug2017/min/17155014/inputx/733.png'
 
-model_path = '/home/ug2017/min/17155014/weights/weightconcat00000015.h5'
+model_path = '/home/ug2017/min/17155014/weights/weightfad00000015.h5'
 
 x = load_image(image_path) # load a test frame
 model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
