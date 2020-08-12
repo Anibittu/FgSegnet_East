@@ -16,157 +16,40 @@ def load_image(path):
     x = np.expand_dims(x, axis=0)
     return x
 
-image_path = '/home/ug2017/min/17155014/inputx/0.png'
-'''
-for i in range (36):
-    if((i%5==0)&(i>0)):
-        if(i==5):
-             model_path = '/home/ug2017/min/17155014/weights/weightconcat00000005.h5'
-        else:
-             model_path = '/home/ug2017/min/17155014/weights/weightconcat000000{}.h5'.format(i)
-       
-        x = load_image(image_path) # load a test frame
-        model = load_model(model_path, custom_objects={'tf':tf,'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-        probs = model.predict(x, batch_size=1, verbose=1)
-        print(probs.shape) # (1, 240,320,1)
-        probs = probs.reshape([probs.shape[1], probs.shape[2]])
-        print(probs.shape) # (240,320)
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
+image_path = '/home/ug2017/min/17155014/inputx/733.png'
 
-        plt.imshow(probs)
-        plt.savefig('predFGadd{}.png'.format(i))
-        plt.show()
-'''
-for i in range(4):
-    if(i==0):
-        model_path = '/home/ug2017/min/17155014/weights/mdl_train6.h5'
-        x = load_image(image_path) # load a test frame
-        model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-        probs = model.predict(x, batch_size=1, verbose=1)
-        print(probs.shape) # (1, 240,320,1)
-        probs = probs.reshape([probs.shape[1], probs.shape[2]])
-        print(probs.shape) # (240,320)
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
+model_path = '/home/ug2017/min/17155014/weights/weightconcat00000015.h5'
 
-        plt.imshow(probs)
+x = load_image(image_path) # load a test frame
+model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
+probs = model.predict(x, batch_size=1, verbose=1)
+print(probs.shape) # (1, 240,320,1)
+probs = probs.reshape([probs.shape[1], probs.shape[2]])
+print(probs.shape) # (240,320)
 
-        plt.title('Segmentation mask before thresholding')
-        plt.axis('off')
-        plt.savefig('train6.png')
-        plt.show()
-        # Thresholding (one can specify any threshold values)
-        threshold = 0.8
-        probs[probs<threshold] = 0.
-        probs[probs>=threshold] = 1.
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
 
-        plt.imshow(probs)
+plt.subplot(1, 1, 1)
+plt.rcParams['figure.figsize'] = (5.0, 5.0)
+plt.rcParams['image.cmap'] = 'gray'
 
-        plt.title('Segmentation mask after thresholding')
-        plt.axis('off')
-        plt.savefig('TRAIN6.png')
-        plt.show()
-    if(i==1):
-        model_path = '/home/ug2017/min/17155014/weights/mdl_traineastaad.h5'
-        x = load_image(image_path) # load a test frame
-        model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-        probs = model.predict(x, batch_size=1, verbose=1)
-        print(probs.shape) # (1, 240,320,1)
-        probs = probs.reshape([probs.shape[1], probs.shape[2]])
-        print(probs.shape) # (240,320)
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
+plt.imshow(probs)
 
-        plt.imshow(probs)
+plt.title('Segmentation mask before thresholding')
+plt.axis('off')
+plt.savefig('733coc15.png')
+plt.show()
 
-        plt.title('Segmentation mask before thresholding')
-        plt.axis('off')
-        plt.savefig('eastadd.png')
-        plt.show()
-        # Thresholding (one can specify any threshold values)
-        threshold = 0.8
-        probs[probs<threshold] = 0.
-        probs[probs>=threshold] = 1.
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
+threshold = 0.8
+probs[probs<threshold] = 0.
+probs[probs>=threshold] = 1.
 
-        plt.imshow(probs)
+plt.subplot(1, 1, 1)
+plt.rcParams['figure.figsize'] = (5.0, 5.0)
+plt.rcParams['image.cmap'] = 'gray'
 
-        plt.title('Segmentation mask after thresholding')
-        plt.axis('off')
-        plt.savefig('EASTADD.png')
-        plt.show()
-    if(i==2):
-        model_path = '/home/ug2017/min/17155014/weights/mdl_trainfgconcat.h5 '
-        x = load_image(image_path) # load a test frame
-        model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-        probs = model.predict(x, batch_size=1, verbose=1)
-        print(probs.shape) # (1, 240,320,1)
-        probs = probs.reshape([probs.shape[1], probs.shape[2]])
-        print(probs.shape) # (240,320)
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
+plt.imshow(probs)
 
-        plt.imshow(probs)
-
-        plt.title('Segmentation mask before thresholding')
-        plt.axis('off')
-        plt.savefig('trainconc.png')
-        plt.show()
-        # Thresholding (one can specify any threshold values)
-        threshold = 0.8
-        probs[probs<threshold] = 0.
-        probs[probs>=threshold] = 1.
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
-
-        plt.imshow(probs)
-
-        plt.title('Segmentation mask after thresholding')
-        plt.axis('off')
-        plt.savefig('TRAINCONC.png')
-        plt.show()
-    if(i==3):
-        model_path = '/home/ug2017/min/17155014/weights/mdl_trainfgadd.h5'
-        x = load_image(image_path) # load a test frame
-        model = load_model(model_path, custom_objects={'MyUpSampling2D': MyUpSampling2D, 'InstanceNormalization': InstanceNormalization, 'loss':loss, 'acc':acc, 'loss2':loss2, 'acc2':acc2}) #load the trained model
-        probs = model.predict(x, batch_size=1, verbose=1)
-        print(probs.shape) # (1, 240,320,1)
-        probs = probs.reshape([probs.shape[1], probs.shape[2]])
-        print(probs.shape) # (240,320)
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
-
-        plt.imshow(probs)
-
-        plt.title('Segmentation mask before thresholding')
-        plt.axis('off')
-        plt.savefig('traingaad.png')
-        plt.show()
-        # Thresholding (one can specify any threshold values)
-        threshold = 0.8
-        probs[probs<threshold] = 0.
-        probs[probs>=threshold] = 1.
-        plt.subplot(1, 1, 1)
-        plt.rcParams['figure.figsize'] = (5.0, 5.0)
-        plt.rcParams['image.cmap'] = 'gray'
-
-        plt.imshow(probs)
-
-        plt.title('Segmentation mask after thresholding')
-        plt.axis('off')
-        plt.savefig('TRAINGAAD.png')
-        plt.show()
-    
-        
+plt.title('Segmentation mask after thresholding')
+plt.axis('off')
+plt.savefig('733COC15.png')
+plt.show()
